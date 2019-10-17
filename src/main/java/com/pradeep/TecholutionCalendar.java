@@ -1,31 +1,32 @@
 package com.pradeep;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.stream.IntStream;
 
 public class TecholutionCalendar {
 	static MyCalendar myCalendar = new MyCalendar();
 	public static void main(String[] args) {
-		System.out.println(myCalendar.getFirstDayOfMonth(5, 2019));
-		System.out.println(myCalendar.getLastFriday(1, 2019));
+		myCalendar.displayPayoutFridaysForYear(2019);
 	}
 
 }
 
 class MyCalendar {
 	
-	Date getLastFriday( int day, int year ) {
-		Calendar cal = Calendar.getInstance();
-		cal.set( year, 1, day);
-		cal.add( Calendar.DAY_OF_MONTH, -( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 1 ) );
-		return cal.getTime();
-	}
 	
-	Date getFirstDayOfMonth( int day, int year ) {
-		Calendar cal = Calendar.getInstance();
-		cal.set( year, 0, 5);
-		cal.add( Calendar.DAY_OF_MONTH, +5 );
-		return cal.getTime();
+	void displayPayoutFridaysForYear(int year) {
+	   Calendar cal = Calendar.getInstance();
+	   System.out.println("Displaying last fridays for year : "+ year);
+	   IntStream.rangeClosed(1, 12).forEachOrdered(month -> lastFridayForMonth(cal, year, month));
+	}
+
+	private void lastFridayForMonth(Calendar cal, int year, int month) {
+		cal.set( year, month, 1 );
+//		System.out.println(cal.get(Calendar.DAY_OF_MONTH));
+//		System.out.println( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 1 );
+		   cal.add( Calendar.DAY_OF_MONTH, -( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 1 ) );
+		   System.out.println(new SimpleDateFormat("MMMMM").format(cal.getTime()) +" - "+ cal.get(Calendar.DAY_OF_MONTH));
 	}
 }
 
