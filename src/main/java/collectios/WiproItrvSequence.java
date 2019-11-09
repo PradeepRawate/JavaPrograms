@@ -1,4 +1,4 @@
-package com.pradeep;
+package collectios;
 
 public class WiproItrvSequence {
 

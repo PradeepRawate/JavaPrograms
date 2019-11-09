@@ -1,4 +1,4 @@
-package com.pradeep;
+package collectios;
 
 import java.util.HashMap;
 import java.util.Map;

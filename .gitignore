@@ -28,3 +28,4 @@ bin/
 log/
 /imageName
 /newimage
+/.DS_Store
