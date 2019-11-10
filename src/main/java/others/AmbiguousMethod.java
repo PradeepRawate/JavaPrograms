@@ -1,4 +1,4 @@
-package collectios;
+package others;
 
 public class AmbiguousMethod {
 
